@@ -15,5 +15,15 @@ modulo.config(function($stateProvider,$urlRouterProvider){
         templateUrl: "template/veterinarios.html",
         controller: "VetCtrl",
         controllerAs: "vm"
+    }).state('insertarOwner', {
+        url: "/insertarOwner",
+        templateUrl: "template/insertarOwner.html",
+        controller: "OwnersCtrl",
+        controllerAs: "vm"
+    }).state('editarOwner', {
+        url: "/editarOwner/:ownerId/edit",
+        templateUrl: "template/insertarOwner.html",
+        controller: "OwnersCtrl",
+        controllerAs: "vm"
     })
 });

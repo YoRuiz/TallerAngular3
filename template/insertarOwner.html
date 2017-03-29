@@ -1,0 +1,34 @@
+<section>
+    <div class="container col-md-10 col-md-offset-1">
+   <fieldset>
+    <legend>Insertar Propietario</legend>
+       <form ng-submit="vm.submit">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" ng-model="vm.owners.name" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="apellidos" class="form-control" name="apellidos">
+            </div>
+           <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="direccion" class="form-control" name="direccion">
+            </div>
+           <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <input type="ciudad" class="form-control" name="ciudad">
+            </div>
+           <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="telefono" class="form-control" name="telefono">
+            </div>
+           <div class="form-group">
+                <label for="mascota">Mascota:</label>
+                <input type="mascota" class="form-control" name="mascota">
+            </div>
+                <button type="submit" class="btn btn-default">Crear Propietario</button>
+    </form>
+    </fieldset>
+    </div>
+</section>
