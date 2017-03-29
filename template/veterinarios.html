@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iván Alfonso Lara</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
+
+    <style type="text/css">
+        th {
+            background-color: black;
+            color: white;
+        }
+        
+        body {
+            background-color: #f1f1f1;
+        }
+        
+        a.navbar-brand {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        
+        footer {
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+    <section>
+        <!-- División para el contenido (que contendrá el footer) -->
+        <div id="contenido" class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h1>Veterinarians</h1>
+                    <br>
+                </div>
+            </div>
+            <div class="container col-md-6 col-md-offset-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Especialidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="vet in vm.vets">
+                            <td>{{vet.id}}</td>
+                            <td>{{vet.firstName | uppercase}}</td>
+                            <td>{{vet.lastName}}</td>
+                            <td><span ng-repeat="specialty in vet.specialties track by specialty.name">{{specialty.name}}<span ng-if="!$last">, </span></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
