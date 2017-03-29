@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="petclinicApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iván Alfonso Lara</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+   
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body ng-controller="OwnersCtrl as vm">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				   <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+                    <a class="navbar-brand" href="index.html">
+                        <img class="logo" src="img/spring-logo-dataflow-mobile.png" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html" alt="Home">Home</a></li>
+                        <li class="active"><a href="owners.html">Find owners</a></li>
+                        <li><a href="veterinarios.html">Veterinarians</a></li>
+                        <li><a href="error.html">Error</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div id="contenido" class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h1>Propietarios</h1>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="well well-lg col-md-10 col-md-offset-1">
+                    <form>
+                        <div class="form-group">
+                            <label>Búsqueda:
+                    </label><input class="form-control" class="" type="search" ng-model="vm.filtro">
+                        </div>
+                        <button type="submit" class="btn btn-success">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="contenido" class="container-fluid">
+            <div class="row">
+                <div class="container col-md-10 col-md-offset-1">
+                    <!--                    ng-hide="!filtro.length"                    -->
+                    <input type="button"  value="Crear Owner" ng-click="vm.createOwner()">
+                    <h4 ng-if="vm.filtro">Filtrado por: {{vm.filtro}}</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Dirección</th>
+                                <th>Ciudad</th>
+                                <th>Teléfono</th>
+                                <th>Nº Mascotas</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+<!--                            ng-repeat="own in owners | filter:filtro" ng-class="{'danger':own.numPets==0}"-->
+                            <tr ng-repeat="own in vm.owners | filter:{firstName:vm.filtro} | orderBy:'-pets'" ng-class="{'danger':own.pets==0}">
+                                <td>{{own.id}}</td>
+                                <td>{{own.firstName | uppercase}}</td>
+                                <td>{{own.lastName}}</td>
+                                <td>{{own.address}}</td>
+                                <td>{{own.city}}</td>
+                                <td>{{own.telephone}}</td>
+                                <td><span ng-repeat="pet in own.pets track by pet.id">{{pet.name}}<span ng-if="!$last">, </span></span></td>
+                                <td><button class="btn btn-danger" ng-click="vm.deleteOwners(own)">x</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <footer>
+                    <img src="img/spring-pivotal-logo.png">
+                </footer>
+            </div>
+        </div>
+    </footer>
+</body>
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="js/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/ownersController.js"></script>
+    <script src="js/ownersFactory.js"></script>
+    <script src="js/filtroTele.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</html>
